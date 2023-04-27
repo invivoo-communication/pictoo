@@ -4,107 +4,75 @@ const items = [
   {
     img: 'books.png',
     title: 'Livre préféré',
-    sentence: 'Quel est ton livre préféré ?'
+    sentence: 'Ton livre préféré ?'
   },
   {
     img: 'chocolate.png',
     title: 'Péché mignon',
-    sentence: 'Quel est ton péché mignon ?'
+    sentence: 'Ton péché mignon ?'
   },
   {
     img: 'drink.png',
     title: 'Boisson favorite',
-    sentence: 'Quelle est ta boisson favorite ?'
+    sentence: 'Ta boisson favorite ?'
   },
   {
     img: 'emoji.png',
     title: 'Émoji du jour',
-    sentence: 'Quel est ton émoji du jour ?'
+    sentence: 'Ton émoji du jour ?'
   },
   {
     img: 'food.png',
     title: 'Plat préféré',
-    sentence: 'Quel est ton plat préféré ?'
+    sentence: 'Ton plat préféré ?'
   },
   {
     img: 'gamepad.png',
     title: 'Jeu préféré',
-    sentence: 'Quel est ton jeu préféré ?'
+    sentence: 'Ton jeu préféré ?'
   },
   {
     img: 'picture.png',
     title: 'Photo préférée',
-    sentence: 'Quel est ta photo préférée ?'
+    sentence: 'Ta photo préférée ?'
   },
   {
     img: 'planet.png',
     title: 'Destination de rêve',
-    sentence: 'Quelle serait ta destination de rêve ?'
+    sentence: 'Ta destination de rêve ?'
   },
   {
     img: 'plane.png',
     title: 'Voyage préféré',
-    sentence: 'Quelle est tonvoyage préféré ?'
+    sentence: 'Ton voyage préféré ?'
   },
   {
     img: 'popcorn.png',
     title: 'Film ou série préféré(e)',
-    sentence: 'Quelle est ton film ou ta série préféré(e) ?'
+    sentence: 'Ton film ou ta série préféré(e) ?'
   },
   {
     img: 'radio.png',
     title: 'Musique préférée',
-    sentence: 'Quelle est ta musique préférée ?'
+    sentence: 'Ta musique préférée ?'
   },
   {
     img: 'skateboard.png',
     title: 'Activité préférée',
-    sentence: 'Quelle est ton activité préférée ?'
+    sentence: 'Ton activité préférée ?'
   },
 ]
 
 const button = document.getElementById("button");
 const image = document.getElementById("image");
 const container = document.getElementById("image-container");
-const audio = document.getElementById('audio');
+const audioPlayers = {
+  audio1: document.getElementById('audio1'),
+  audio2: document.getElementById('audio2'),
+  audio3: document.getElementById('audio3'),
+}
 
 button.addEventListener("click", startSmoothScrolling);
-
-// J'ai commenté la fonction (corrigée) pour ajouter le scroll qui ralentit
-/* function startScrolling() {
-  button.disabled = true;
-  button.classList.add("button-breathe"); // Add the "button-breathe" class to start the animation
-  let currentIndex = 0;
-  let intervalDuration = 100;
-  const intervalId = setInterval(() => {
-    currentIndex = parseInt((Math.random() * items.length));
-    if (currentIndex === items.length) {
-      currentIndex = 0;
-    }
-    currentItem = items[currentIndex]
-    image.src = 'img/' + currentItem.img;
-    const timeLeft = 6000 - (currentIndex + 1) * intervalDuration;
-    if (timeLeft < 1000) {
-      intervalDuration += timeLeft / 120;
-    } else if (timeLeft < 2000) {
-      intervalDuration += timeLeft / 140;
-    } else if (timeLeft < 3000) {
-      intervalDuration += timeLeft / 160;
-    }
-  }, intervalDuration);
-
-  audio.currentTime = 0;
-  audio.play();
-
-  setTimeout(() => {
-    clearInterval(intervalId);
-    button.disabled = false;
-    button.classList.remove("button-breathe"); // Remove the "button-breathe" class to stop the animation
-    audio.pause();
-    displaySentence(currentItem.sentence || '')
-  }, 6000);
-} */
-
 
 function startSmoothScrolling() {
   displaySentence('')
@@ -115,9 +83,8 @@ function startSmoothScrolling() {
   let elapsedTime = 0;
 
   let currentSettimeout = 0;
-  audio.currentTime = 0;
-  audio.play();
-  const nextTick = (time) => {
+
+  const nextTick = (time, even) => {
     currentSettimeout = setTimeout(() => {
       nextIndex = parseInt((Math.random() * items.length));
       if (nextIndex === items.length) {
@@ -125,39 +92,43 @@ function startSmoothScrolling() {
       }
       currentItem = items[nextIndex]
       image.src = 'img/' + currentItem.img;
+
+      audioPlayers[`audio${even?2:1}`].currentTime = 0;
+      audioPlayers[`audio${even?2:1}`].play();
+
       elapsedTime += time
 
       if(elapsedTime >= totalTime) { 
         clearTimeout(currentSettimeout)
         displaySentence(currentItem.sentence || '')
+        audioPlayers['audio3'].play();
         button.disabled = false;
         button.classList.remove("button-breathe"); // Remove the "button-breathe" class to stop the animation
-        audio.pause();
       } 
       else if(totalTime - elapsedTime <= 1000) {
-        currentSettimeout = nextTick(666)
+        currentSettimeout = nextTick(666, !even)
         return
       }
       else if(totalTime - elapsedTime <= 2000) {
-        currentSettimeout = nextTick(500)
+        currentSettimeout = nextTick(500, !even)
         return
       }
       else if(totalTime - elapsedTime <= 3000) {
-        currentSettimeout = nextTick(250)
+        currentSettimeout = nextTick(250, !even)
         return
       }
       else if(totalTime - elapsedTime <= 4000) {
-        currentSettimeout = nextTick(125)
+        currentSettimeout = nextTick(125, !even)
         return
       } else {
-        currentSettimeout = nextTick(100)
+        currentSettimeout = nextTick(100, !even)
         return
       }
 
     }, time)
   }
 
-  currentSettimeout = nextTick(100)
+  currentSettimeout = nextTick(100, false)
 }
 
 function displaySentence(sentence) {
