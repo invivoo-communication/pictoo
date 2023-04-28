@@ -13,6 +13,11 @@ body {
   animation: gradient 15s ease infinite;
 }
 
+@media screen and (max-width: 600px) {
+  #sentence {
+    font-size: 1.5rem;
+  }
+}
 
 
 @font-face {
@@ -127,13 +132,17 @@ button {
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: block;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 img {
   display: block;
   margin: 0 auto;
   width: 70%;
-  max-width: 600px;
+  max-width: 100%;
+  height: auto;
 }
 
 p {
@@ -157,6 +166,10 @@ p {
   background-size: cover;
   background-position: bottom right;
   z-index: 1;
+}
+
+#sentence {
+  font-size: 2rem;
 }
 
 #sentence:empty {
