@@ -7,8 +7,6 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  padding-left: 1vw;
-  padding-right: 1vw;
   background: linear-gradient(-45deg, #FECF56, #FD5F5E, #6B46FF, #63C1EC, #FECF56);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
