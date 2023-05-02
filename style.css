@@ -125,6 +125,12 @@ button {
   /* You can change the font-family to any other custom font you want */
 }
 
+button:hover {
+  transform: scale(1.2);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
 
 #image-container {
   text-align: center;
@@ -195,4 +201,57 @@ p {
     opacity: .25;
     transform: rotate(-720deg) scale(.2);
   }
+}
+
+.call-to-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.call-to-action h2 {
+  width: 70%;
+  margin: 0;
+  font-family: 'Inkarus-Regular', sans-serif;
+  font-size: 1.4rem;
+}
+
+.call-to-action a.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-family: helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s;
+  border-radius: 5px;
+}
+
+.call-to-action a.cta-button:hover {
+	background-color: black;
+			color: black;
+			transform: scale(1.2);
+}
+
+.call-to-action a.cta-button:hover span {
+  display: none;
+}
+
+.call-to-action a.cta-button:hover:after {
+  content: "🔥";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 13pt;
+  font-weight: bold;
+  transition: all 0.2s;
 }
