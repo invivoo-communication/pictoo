@@ -63,9 +63,14 @@ const items = [
   },
 ]
 
+
+
+
+
 const button = document.getElementById("button");
 const image = document.getElementById("image");
 const container = document.getElementById("image-container");
+const container2 = document.getElementById("container2");
 const audioPlayers = {
   audio1: document.getElementById('audio1'),
   audio2: document.getElementById('audio2'),
@@ -134,3 +139,20 @@ function startSmoothScrolling() {
 function displaySentence(sentence) {
   document.getElementById('sentence').innerText = sentence;
 }
+
+function dispatchSentenceAppearEvent() {
+  document.dispatchEvent(new Event("sentence-appear"));
+}
+
+document.getElementById("sentence").addEventListener("animationend", function() {
+  container2.style.display = "block";
+});
+
+document.addEventListener("sentence-appear", function() {
+  container2.style.display = "block";
+});
+
+
+
+
+
