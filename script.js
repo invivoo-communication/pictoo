@@ -18,8 +18,8 @@ const items = [
   },
   {
     img: 'emoji.png',
-    title: 'Émoji du jour',
-    sentence: 'Ton émoji du jour ?'
+    title: 'Émoji préféré',
+    sentence: 'Ton émoji préféré ?'
   },
   {
     img: 'food.png',
@@ -60,6 +60,61 @@ const items = [
     img: 'skateboard.png',
     title: 'Activité préférée',
     sentence: 'Ton activité préférée ?'
+  },
+  {
+    img: 'superpower.png',
+    title: 'Super-pouvoir idéal',
+    sentence: 'Ton super-pouvoir idéal ?'
+  },
+  {
+    img: 'animal.png',
+    title: 'Animal préféré',
+    sentence: 'Ton animal préféré ?'
+  },
+  {
+    img: 'talent.png',
+    title: 'Talent caché',
+    sentence: 'Ton talent caché ?'
+  },
+  {
+    img: 'ecology.png',
+    title: 'Écogeste préféré',
+    sentence: 'Ton écogeste préféré ?'
+  },
+  {
+    img: 'vip.png',
+    title: 'Personnalité préférée',
+    sentence: 'Ta personnalisté préférée ?'
+  },
+  {
+    img: 'sun.png',
+    title: 'Saison préférée',
+    sentence: 'Ta saison préférée ?'
+  },
+  {
+    img: 'job.png',
+    title: 'Métier idéal',
+    sentence: 'Ton métier idéal quand tu étais petit ?'
+  },
+  {
+    img: 'concert.png',
+    title: 'Concert idéal',
+    sentence: 'Ton dernier concert ?'
+  },
+  {
+    img: 'projet.png',
+    title: 'Projet proche',
+    sentence: 'Ton futur projet (6mois) ?'
+  },
+  {
+    img: 'mot.png',
+    title: 'En 1 mot',
+    sentence: 'Décris-toi en 1 mot ?'
+  },
+  {
+    img: 'social.png',
+    title: 'Réseau social préféré',
+    sentence: 'Ton réseau social préféré ?'
   },
 ]
 
